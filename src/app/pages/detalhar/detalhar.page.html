@@ -1,0 +1,113 @@
+<ion-content>
+  <div class="conjunto">
+    <ion-list>
+      <main class="caixa">
+        <div>
+          <ion-avatar>
+            <ion-img style="width: 100px; height: 110px;" src={{serie.downloadURL}}></ion-img>
+          </ion-avatar>
+        </div>
+        <div class="a">Detalhe da Série</div>
+        <div>
+          <ion-label>Habilitar Edição</ion-label>
+          <ion-toggle color="medium" (ionChange)="alterarEdicao()"></ion-toggle>
+        </div>
+        <form [formGroup]="form_detalhar" (ngSubmit)="submitForm()">
+
+          <div>
+            <ion-input placeholder="Nome" formControlName="nome" disabled="{{edicao}}"></ion-input>
+            <div *ngIf="((errorControl.nome.touched) || (errorControl.nome.dirty)&& errorControl.nome.errors)">
+              <span *ngIf="errorControl.nome.errors?.required">
+                Nome é Obrigatório!
+              </span>
+            </div>
+          </div>
+          <div>
+            <ion-input placeholder="Autor" formControlName="autor" disabled="{{edicao}}"></ion-input>
+            <div *ngIf="((errorControl.autor.touched) || (errorControl.autor.dirty)&& errorControl.autor.errors)">
+              <span *ngIf="errorControl.autor.errors?.required">
+                Autor é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-input placeholder="Episodios" formControlName="episodio" disabled="{{edicao}}"  min="1" type="number"></ion-input>
+            <div
+              *ngIf="((errorControl.episodio.touched) || (errorControl.episodio.dirty)&& errorControl.episodio.errors)">
+              <span *ngIf="errorControl.episodio.errors?.required">
+                Numero de episodios é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-select placeholder="Selecione genero" formControlName="genero" disabled="{{edicao}}">
+              <ion-select-option value="terror">terror</ion-select-option>
+              <ion-select-option value="fantasia">fantasia</ion-select-option>
+              <ion-select-option value="comedia">comedia</ion-select-option>
+              <ion-select-option value="drama">drama</ion-select-option>
+            </ion-select>
+            <div *ngIf="((errorControl.genero.touched) || (errorControl.genero.dirty)&& errorControl.genero.errors)">
+              <span *ngIf="errorControl.genero.errors?.required">
+                Genero é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <textarea placeholder="Sinopse" formControlName="sinopse" disabled></textarea>
+            <div *ngIf="((errorControl.sinopse.touched) || (errorControl.sinopse.dirty)&& errorControl.sinopse.errors)">
+              <span *ngIf="errorControl.sinopse.errors?.required">
+                Uma preve descrição da serie é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-select placeholder="Selecione temporada" formControlName="temporada" disabled="{{edicao}}">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+            </ion-select>
+            <div
+              *ngIf="((errorControl.temporada.touched) || (errorControl.temporada.dirty)&& errorControl.temporada.errors)">
+              <span *ngIf="errorControl.temporada.errors?.required">
+                numero de temporadas é Obrigatório!
+              </span>
+              <span *ngIf="errorControl.episodio.errors?.maxlength">
+                Epsodio precisa ter no maximo 5 caracteres!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-input placeholder="Plataforma" formControlName="plataforma" disabled="{{edicao}}"></ion-input>
+            <div
+              *ngIf="((errorControl.plataforma.touched) || (errorControl.plataforma.dirty)&& errorControl.plataforma.errors)">
+              <span *ngIf="errorControl.plataforma.errors?.required">
+                A plataforma é Obrigatório!
+              </span>
+            </div>
+          </div>
+          <div>
+            <ion-button disabled="{{edicao}}" size="small" color="medium" shape="round">
+              <input type="file" (change)="uploadFile($event.target)" />
+            </ion-button>
+          </div>
+          <ion-button class="btnE" disabled="{{edicao}}" expand="block" fill="clear" (click)="editar()">Editar
+          </ion-button>
+          <ion-button class="btnS" disabled="{{edicao}}" expand="block" fill="clear" (click)="excluir()">Excluir
+          </ion-button>
+        </form>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button color="primary" (click)="irParaHome()">
+            <ion-icon name="home"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </main>
+    </ion-list>
+  </div>
+
+</ion-content>

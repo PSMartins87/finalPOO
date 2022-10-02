@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400&display=swap');
+ion-list{
+  height: 100vh;
+  background-image: url('../img/fundoCadastrar.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+ion-avatar{
+  width: 120px; 
+  height: 150px;
+
+}
+ion-img{
+  border-radius:5px;
+ 
+}
+div,span{
+  top: 5%;
+  transform: translateY(-5%);
+}
+
+
+ion-label{
+  font-family: 'londrina';
+}
+
+.caixa{
+  background-color:#000101a8;
+  padding: 55px;
+  color: #000000;
+  max-width: 450px;//tamanho da caixa
+  margin:0 auto 80px;//coloca no meio
+}
+.a{
+  top: 46%;
+  transform: translateY(-46%);
+  text-align: center ;
+  color:#f6e3dd;;//branco co opacidaade
+  font-family: 'Londrina+Solid';
+  font-size: 60px;
+}
+
+
+.a:hover{
+  color:  #f6e3dd;
+  text-shadow: 0 0 8px  #f6e3dd;
+}
+.title{
+  position:absolute;
+  left: 0%;
+  right: 0;
+  height: 60px;
+  top: 10%;
+  transform: translateY(-10%);
+  text-align: center ;
+  color:#f6e3dd;
+  font-family: 'londrina';
+  font-size: 24px;
+  line-height: 50px;
+}
+.title:hover{
+  color: #f6e3dd;
+  text-shadow: 0 0 8px #f6e3dd;
+}
+

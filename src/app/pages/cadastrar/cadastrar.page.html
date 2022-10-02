@@ -1,0 +1,103 @@
+<ion-content>
+  <div class="conjunto">
+    <ion-list>
+      <main class="caixa">
+        <div class="a">Cadastre uma Série</div>
+        <form [formGroup]="form_cadastrar" (ngSubmit)="submitForm()">
+          <div>
+            <ion-input placeholder="Nome" formControlName="nome"></ion-input>
+            <div *ngIf="((errorControl.nome.touched) || (errorControl.nome.dirty)&& errorControl.nome.errors)">
+              <span *ngIf="errorControl.nome.errors?.required">
+                Nome é Obrigatório!
+              </span>
+            </div>
+          </div>
+          <div>
+            <ion-input placeholder="Autor" formControlName="autor"></ion-input>
+            <div *ngIf="((errorControl.autor.touched) || (errorControl.autor.dirty)&& errorControl.autor.errors)">
+              <span *ngIf="errorControl.autor.errors?.required">
+                Autor é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-input placeholder="Episodios" formControlName="episodio" min="1" type="number"></ion-input>
+            <div
+              *ngIf="((errorControl.episodio.touched) || (errorControl.episodio.dirty)&& errorControl.episodio.errors)">
+              <span *ngIf="errorControl.episodio.errors?.required">
+                Numero de episodios é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-select placeholder="Selecione genero" formControlName="genero">
+              <ion-select-option value="terror">terror</ion-select-option>
+              <ion-select-option value="fantasia">fantasia</ion-select-option>
+              <ion-select-option value="comedia">comedia</ion-select-option>
+              <ion-select-option value="drama">drama</ion-select-option>
+            </ion-select>
+            <div *ngIf="((errorControl.genero.touched) || (errorControl.genero.dirty)&& errorControl.genero.errors)">
+              <span *ngIf="errorControl.genero.errors?.required">
+                Genero é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <textarea placeholder="Sinopse" formControlName="sinopse"></textarea>
+            <div *ngIf="((errorControl.sinopse.touched) || (errorControl.sinopse.dirty)&& errorControl.sinopse.errors)">
+              <span *ngIf="errorControl.sinopse.errors?.required">
+                Uma preve descrição da serie é Obrigatório!
+              </span>
+              <span *ngIf="errorControl.sinopse.errors?.minlength">
+                É necessario ter no máximo 200 caracteres!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-select placeholder="Selecione temporada" formControlName="temporada">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+            </ion-select>
+            <div
+              *ngIf="((errorControl.temporada.touched) || (errorControl.temporada.dirty)&& errorControl.temporada.errors)">
+              <span *ngIf="errorControl.temporada.errors?.required">
+                Numero de temporadas é Obrigatório!
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <ion-input placeholder="Plataforma" formControlName="plataforma"></ion-input>
+            <div
+              *ngIf="((errorControl.plataforma.touched) || (errorControl.plataforma.dirty)&& errorControl.plataforma.errors)">
+              <span *ngIf="errorControl.plataforma.errors?.required">
+                A plataforma é Obrigatório!
+              </span>
+            </div>
+          </div>
+          <div>
+            <ion-button size="small" shape="round" color="medium">
+              <input type="file" formControlName="imagem" (change)="uploadFile($event.target)" />
+            </ion-button>
+          </div>
+          <ion-button class="btnE" expand="block" type="submit">Cadastrar</ion-button>
+        </form>
+
+      </main>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="primary" (click)="irParaHome()">
+          <ion-icon name="home"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-list>
+  </div>
+
+
+
+</ion-content>

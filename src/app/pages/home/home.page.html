@@ -1,0 +1,40 @@
+<ion-content>
+
+  <ion-list>
+    <main class="caixa">
+      <div class="a"><a>SÉRIES</a></div>
+      <div class = "title"><p>Cátalogo</p></div>
+
+      <ion-slides class="series" [options]="slidesOptions">
+        <ion-slide *ngFor="let serie of series">
+
+          <ion-card-content (click)="irParaDetalhar(serie)">
+            <div class="conjunto">
+
+              <div>
+                <ion-avatar>
+                  <ion-img style="width: 100px; height: 110px;" src={{serie.downloadURL}}>
+                  </ion-img>
+                </ion-avatar>
+              </div>
+            </div>
+          </ion-card-content>
+
+          <ion-item-options side="end">
+            <ion-item-option (click)="irParaDetalhar(serie)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-slide>
+      </ion-slides>
+
+    </main>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="irParaCadastrar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
